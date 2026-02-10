@@ -13,7 +13,7 @@ const addToList= (message) => {
     const listItem = document.createElement('li');
     listItem.innerText = message;
 
-    list.appendChild(list);
+    list.appendChild(listItem);
 }
 
 //function to sent the message: 
