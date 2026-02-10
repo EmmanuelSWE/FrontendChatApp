@@ -1,0 +1,138 @@
+what should the user be able to do? 
+login - login page
+signup - sing up page
+logout - will be a button (in the nav)
+see online users - feature (may just list them?)
+send messages - chatPage, will have contact section
+group chat - messages as well
+send button - chat stuff.
+
+
+COMPONENTS (not really but sort of)
+- A nav on all pages (will contain logout , account ,signup, login features)
+- online section : shows all users online (as well as groups)
+-button to send chat : just send to the chat 
+- chat section : section which shows and prints chats
+
+PAGE STRUCTURE: 
+
+-landing page to describe(if necessary)
+- login page (all login features)
+- signup page (all sign in features)
+- chatpage (has a chat section with the online section)
+
+
+
+
+how will the json look like: 
+	like the objects duhhh...
+
+what will the objects look like : 
+
+	userSession{
+	sid : string;
+	createdAt : date; 
+	endedAt : date;	
+	user : user;
+	
+	startSession(); // will make user status to online
+	endSession(); // will show offline
+	get startTime(); 
+	get endTime(); // will return either 0 or an actual date
+	get user
+	
+	}
+
+	User{	
+	id : string;
+	userName : string;
+	Status : string;
+	profilePhoto : string;	
+	currentSession: session;
+
+	static signUp()
+	static login()
+	logout()
+	sendMessage(chatRoom,body) //sends messages to a spefic chat room 
+	
+	
+
+	
+	}
+
+
+
+	chatRoom{
+	cid : string;
+	cname : string; 
+	cType : string; (either private or group)
+	chatNum: string;
+	Messages : message[];
+	members : users[];
+
+	validateUsers(users) //checks if they are in the chat.. if not they must join 
+	validateMesssage(); //
+
+	sendMessageToChat(user) // may be redundant ill see if there is a need for it
+		
+	}
+
+
+	messages{
+	mid : string (format of cid, chat number)
+	sender : uid;
+	message : string;
+	deleted : Boolean;
+	createdAt date;
+	cid : string;
+
+	sendMessage(chatRoom); // this one will validate the text and make sure its okay - its looking useless too I can lie
+	
+	
+	}
+	
+	
+	chatRoomUsers{
+	cid : string;
+	uid : string;
+	
+
+	}
+
+
+
+=== IDEAS :
+The process? 
+User signups.
+goes to login.
+logs in 
+user selects an online or offline chat member.
+chatroom is created 
+
+if it is a group they must choose to join 
+
+then one the chat section all the chats of the chatroom will load asynchornusly 
+just top to bottom
+then form the top to bottom 
+they add another chat and it will get loaded...maybe I should load it from the bottom up hmm must decide late once ik how the local storage and session storage work.
+
+
+how will they talk : 
+ive heard of session storage on GitHub and local storage apparently they all talk together should look into in. They will have the same session storage. 
+
+
+how will the user now the name and the chat ? 
+maybe make the person the chat? but then too many chatrooms. 
+why not use session storage... who ever's ID is in the storage look use chatRooms features to make it the name of the other person...
+
+How will I display online users? 
+look for all sessions with no end dates then they are online. 
+
+
+Real time messaging : will have to look for a way 
+
+research on the local and session storage.
+
+
+
+	
