@@ -22,6 +22,18 @@ export class User {
        
   }
 
+  static getUser(userName){
+        const queryUser = new User();
+        queryUser.userName = userName
+        let Users = JSON.parse(localStorage.getItem('Users'));
+
+        if(Users != null && User.lookforUser(Users,queryUser) != null){
+          return User.lookforUser(Users,queryUser);
+        }
+
+        return false;
+  }
+
   static signUp(user) {
     // logic for signing up
     //first make sure all the values are truthy 
@@ -92,3 +104,6 @@ console.log(` user found`);
     // sends message to a specific chat room
   }
 }
+
+
+

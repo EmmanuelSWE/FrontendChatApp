@@ -17,7 +17,6 @@ const signUp= async ()=>{
     const newUser = new User(count+1,uNameInput.value,'pic', password.value);
 
     User.signUp(newUser);
-
 }
 
 

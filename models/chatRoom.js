@@ -1,12 +1,12 @@
 
 export class ChatRoom {
-  constructor(cid, cname, cType) {
+  constructor(cid, cname, cType , members = []) {
     this.cid = cid;          // string
     this.cname = cname;      // string
     this.cType = cType;      // string ("private" or "group")
     this.chatNum = 0;        // string/number
     this.messages = [];      // array of Message
-    this.members = [];       // array of Users
+    this.members = members;       // array of Users
   }
 
   validateUsers(users) {

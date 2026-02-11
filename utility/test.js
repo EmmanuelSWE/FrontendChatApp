@@ -3,13 +3,11 @@
 
 //first get the items
 const list = document.getElementById('testBlock');
-const input = document.getElementById('Testinput');
-const button = document.getElementById('sendButton');
-
+//const input = document.getElementById('Testinput');
 
 
 //function to add messages on the list. 
-const addToList= (message,textSide) => {
+export const addToList = (message,textSide) => {
 
     const side = textSide ?? 'right';
 
@@ -41,11 +39,13 @@ const addToList= (message,textSide) => {
     list.scrollTop = list.scrollTop + 5;
 }
 
-//function to sent the message: 
-const sendMessage = (words) => {
-    localStorage.setItem('chat', words);
 
-    addToList(words);
+
+//function to sent the message: 
+export const sendMessage = (message) => {
+    localStorage.setItem('chat', JSON.stringify(message));
+
+   addToList(message.message);
 }
 
 
@@ -54,15 +54,18 @@ window.addEventListener('storage', (event) => {
     console.log(`just got a message`);
     if(event.key === 'chat'){
 
-        console.log(`recieved value is ${event.newValue}`)
-        addToList(event.newValue, 'left');
+       //first the currentsession of the chat
+       const currentChat = JSON.parse(sessionStorage.getItem('currentChat'));
+       if(currentChat != null && currentChat.cid === JSON.parse(event.newValue).cid){ //checking if the user in the session is in the chat
+         console.log(`recieved value is ${event.newValue}`)
+       addToList(event.newValue, 'left');
+       }else{
+        console.log(`recieved message but not in this chat`);
+       }
     }
 })
 
-button.addEventListener('click', ()=>{
-    sendMessage(input.value);
-    console.log(`sending ${input.value}`);
-})
+
 
 //drop list buttons and containers
 const onlineBtn = document.getElementById('onlineGrpBtn');
