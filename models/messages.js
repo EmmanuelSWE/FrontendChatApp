@@ -1,4 +1,4 @@
-class Message {
+export class Message {
   constructor(mid, sender, message, cid) {
     this.mid = mid;              // string (format of cid, chat number)
     this.sender = sender;        // uid

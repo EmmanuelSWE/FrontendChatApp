@@ -1,4 +1,5 @@
-class ChatRoom {
+
+export class ChatRoom {
   constructor(cid, cname, cType) {
     this.cid = cid;          // string
     this.cname = cname;      // string
@@ -19,4 +20,5 @@ class ChatRoom {
   sendMessageToChat(user) {
     // send message to chat
   }
+
 }
