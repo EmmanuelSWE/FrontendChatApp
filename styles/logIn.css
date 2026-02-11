@@ -1,0 +1,72 @@
+.backGround{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    height: 100vh;
+    
+}
+
+.cover{
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: brown;
+    height: 50%;
+    width: 45%;
+
+    border-radius: 3%;
+
+}
+
+.words{
+    color : white;
+    background-image: url('../assets/bubble1.jpg');
+    height: 100%;
+     width: 70%;
+       background-size: cover;
+    background-position: center;
+       border-radius: 3%;
+    background-repeat: no-repeat;
+}
+
+.blurCover{
+  
+    height: 80%;
+    width : 80%;
+    position: relative;
+      display: flex;
+    background-color: transparent;
+    color: white;
+    align-items: center;
+
+    border-radius: 5px;
+
+
+}
+
+.SubmitForm{
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    width: 50%;
+   
+}
+
+button{
+    background-color: black;
+    color: white;
+   border : 1px transparent;
+    border-radius: 10px;
+    margin-top: 5%;
+    padding: 4px 20px;
+}
+
+.inputText{
+    margin: 2% 0;
+    border: 1px transparent;
+    border-radius: 5px;
+}
