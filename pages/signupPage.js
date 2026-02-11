@@ -13,9 +13,7 @@ const password = document.getElementById('password');
 const signUp= async ()=>{
     //get the number of user
     const Users = JSON.parse(localStorage.getItem('Users'));
-
-   const  count = Users ==null ? 0 : Users.length;
-
+   const  count = Users ==null ? 0 : Users.length
     const newUser = new User(count+1,uNameInput.value,'pic', password.value);
 
     User.signUp(newUser);

@@ -8,6 +8,20 @@ export class User {
     this.password =password  // UserSession
   }
 
+
+  static lookforUser(Users,qUser){
+    let found = false;
+      Users.forEach(user =>{
+          if(user.userName === qUser.userName){
+              qUser = user;
+              found = true;
+              return;
+          }
+        })   
+        return found ==true ? qUser : null;
+       
+  }
+
   static signUp(user) {
     // logic for signing up
     //first make sure all the values are truthy 
@@ -18,7 +32,14 @@ export class User {
       //get the list of user
       let Users = JSON.parse(localStorage.getItem('Users'));
 
-      if(Users){ //if truthy then you will add to it
+      if( Users != null && User.lookforUser(Users,user) != null){
+
+
+        console.log('user name cannot be the same');
+        return;
+      }
+
+      if(Users ){ //if truthy then you will add to it
         Users.push(user);
 
       }else { // make and array and push it
@@ -28,6 +49,7 @@ export class User {
       //after push it back
       localStorage.setItem('Users',JSON.stringify(Users));
        console.log(`user saved`);
+       window.location.href = '../pages/logIn.html';
 
     }else {
       console.log(`was unable to signup`);
@@ -41,13 +63,16 @@ export class User {
     //get all the users from localstorage 
     let Users = JSON.parse(localStorage.getItem('Users'));
 
-    if(Users){
+    if(Users != null){
       console.log('Users are registerd');
       if(Users.some( user  => {
         return user.userName === attemptUser.userName && user.password === attemptUser.password;
       })){ // if there is someone with that same log in details then log them in
+console.log(` user found`);
+        attemptUser = User.lookforUser(Users,attemptUser);
+      console.log(` user found`);
         sessionStorage.setItem('user', JSON.stringify(attemptUser));
-        console.log(`${attemptUser.userName} has logged in succesfully`);
+       // console.log(`${attemptUser.userName} has logged in succesfully`);
         return true;
       } 
       
