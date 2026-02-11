@@ -1,0 +1,90 @@
+<!doctype html>
+<head>
+  <title>Les Talk | ChatRoom</title>
+
+  <link href="../styles/chatRoom.css" rel="stylesheet" />
+  <link href="../styles/global.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header>
+        <h1>
+            header
+        </h1>
+    </header>
+  <section class="contactSection" id="contactList">
+    
+    <ul class="globalLists">
+        <h1 class = globalItem>
+            Groups and User Lists
+        </h1>
+        
+
+      <li class="globalItem"> 
+        <button id="onlineGrpBtn" class="dropButton"> Online</button>
+        <div id="itemContainerOnline">
+        <ul class="onlineList">
+                
+          
+           
+        </ul>
+         </div>
+      </li>
+
+      <li class="globalItem">
+         <button id="offlineGrpBtn" class="dropButton"> Offline</button>
+
+
+             <div id="itemContainerOffline">
+        <ul class="offlineList">
+                
+          
+        </ul>
+         </div>
+        
+      </li>
+
+      <button class="borderButton" >
+        Create group
+      </button>
+
+      <li class="globalItem">
+         <button id="grpBtn" class="dropButton"> Groups</button>
+
+                 <div id="itemContainerGroup">
+        <ul class="groupList">
+                
+           
+        </ul>
+         </div>
+       
+      </li>
+    </ul>
+  </section>
+
+  <section id="chatSection">
+    <div class="chatStage">
+
+        <div class="chatBanner">
+            <h1>
+                Ozzy Ozborn
+            </h1>
+            
+        </div>
+       <div class="chatSection">
+         <ul id="testBlock">
+        
+    </ul>
+
+       </div>
+    </div>
+  </section>
+
+  <footer >
+    <input id="Testinput" />
+    <button id="sendButton" class="borderButton">send the message</button>
+  </footer >
+  <script src="../utility/test.js"></script>
+  <script src="./chatRoomPage.js" type="module"></script>
+</body>

@@ -1,0 +1,10 @@
+ it doesn't work remove it. 
+ 
+
+- remove commented out
+
+- prettier 
+
+- cross browser compatability and responsiveness (don't need show everything)
+
+- media queries

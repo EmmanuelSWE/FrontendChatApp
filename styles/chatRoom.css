@@ -1,0 +1,89 @@
+*{
+    color: white;
+    text-align: center;
+}
+
+.dropButton{
+    border : 0px transparent;
+}
+
+
+p{
+    padding: 2% ;
+    width: 50%;
+}
+
+.borderButton{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+header{
+  background-color: black;
+    top : 0;
+    position: fixed;
+    z-index: 6;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 0;
+}
+
+
+ul{
+    list-style-type: none;
+}
+.contactSection{
+     margin-top: 0;
+    position: relative;
+    top: 10%;
+    background-color: black;
+    height: 100%;
+    width: 30%;
+    z-index: 2;
+     text-align: center;
+}
+
+footer {
+    position: fixed ;
+    right: 0;
+    padding-left:  100%;
+   margin-right: 0;
+    bottom: 0;
+    background-color:rgb(26, 24, 24);
+    width : 50%;
+}   
+
+.globalItem{
+    color: white;
+    padding-right: 10%;
+}
+
+#chatSection{
+    margin-top: 0;
+    position: relative;
+    top: 10%;
+    background-color: rgb(53, 53, 53);
+    height: 100%;   
+   width: 100%;
+   overflow-y: scroll;
+
+}
+
+#Testinput{
+    color: black;
+}
+
+#testblock{
+    width : 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+button{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 4px 10px;
+}
+
