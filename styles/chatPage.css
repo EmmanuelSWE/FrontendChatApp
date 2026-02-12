@@ -1,0 +1,149 @@
+* { margin: 0; padding: 0; box-sizing: border-box;   }
+
+/* elements*/
+header{
+  background-color: black;
+    top : 0;
+    position: fixed;
+    z-index: 6;
+    width: 100%;
+    height: 10%;
+    margin-bottom: 0;
+}
+
+body{
+    margin : 0;
+    width : 100vw;
+    height : 100vh;
+  color: white;
+    text-align: center;
+   
+}
+
+p{
+    padding: 2% ;
+    width: 50%;
+}
+
+button{
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 4px 10px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+footer {
+    text-align: right;
+    
+    right : 5%;
+    background-color:rgb(26, 24, 24);
+   
+}   
+
+
+
+/* class names*/
+
+.dropButton{
+    border : 0px transparent;
+}
+
+.center{
+    display: grid;
+     border: 1px solid blue;
+      width : 100vw;
+    height : 100vh;
+      grid-template-columns: 2fr 8fr;
+      grid-template-rows: 1fr 2fr 6fr 1fr;
+
+}
+
+.gridItem{
+    border: 1px solid blue;
+
+}
+
+.globalItem{
+    color: white;
+    
+}
+
+.inputSection{
+    width : 100%;
+    position: relative;
+    right : 5%;
+}
+
+.borderButton{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
+
+.contactSection{
+     
+    position: relative;
+    background-color: black;
+    height: 100%;
+    
+}
+
+.chatBanner, #profile{
+      margin-top: 0;
+   
+    background-color: black;
+    height: 100%;
+   
+     text-align: center;
+}
+
+
+/* id names*/
+#header{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+#contact{
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
+
+#chatSection{
+  
+   
+
+    background-color: rgb(53, 53, 53);
+    height: 100%;   
+   width: 100%;
+   overflow-y: scroll;
+   overflow-anchor: none;
+    
+}
+
+#Testinput{
+    background-color: black;
+    border-radius: 15px;
+    border: 1px solid rgb(77, 76, 76);
+    color: white;
+    width: 70%;
+    height: 2em;
+    
+}
+
+#testblock{
+    width : 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+#sendButton{
+    border-radius: 10px;
+}

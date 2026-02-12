@@ -13,7 +13,7 @@ const logIn= async ()=>{
     let newUser = new User(0,uNameInput.value,'pic', password.value);
  console.log(`this is the user : ${newUser.id } ,${newUser.userName } ,${newUser.status },${newUser.profilePhoto }`);
     if(User.login(newUser)){
-        window.location.href = './chatRoom.html';
+        window.location.href = './chatPage.html';
     }
     
 }

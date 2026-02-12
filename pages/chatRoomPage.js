@@ -31,10 +31,16 @@ export const filterGroups = ( chatRooms,list) =>{
 const createListElement = (message) =>{
         const text = document.createElement('h4');
     text.innerText = `${message}`
+    
     text.addEventListener('click', () => {
       loadChatRoom(message);
     })
-    return text;
+
+    const listItem = document.createElement('li')
+    listItem.style.backgroundColor ='#191919';
+    listItem.width = '100%';
+    listItem.appendChild(text);
+    return listItem;
 }
 
 //when page is loaded, add these
