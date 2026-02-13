@@ -185,7 +185,7 @@ const loadChatRoom = (userName, type = '') => {
         chatBanner.innerText = chatName.userName;
     } else {
         nameElement.innerText = currentChat.cname;
-        chatBanner.innerText = currentChat.userName;
+        chatBanner.innerText = currentChat.cname;
     }
     
     // Assemble
