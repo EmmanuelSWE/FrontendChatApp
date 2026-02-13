@@ -1,24 +1,18 @@
-
+//class for cchatRooms
 export class ChatRoom {
-  constructor(cid, cname, cType) {
-    this.cid = cid;          // string
-    this.cname = cname;      // string
-    this.cType = cType;      // string ("private" or "group")
-    this.chatNum = 0;        // string/number
-    this.messages = [];      // array of Message
-    this.members = [];       // array of Users
+  constructor(cid, cname, cType , members = []) {
+    this.cid = cid;         
+    this.cname = cname;      
+    this.cType = cType;      
+    this.chatNum = 0;        
+    this.messages = [];      
+    this.members = members;       
   }
 
-  validateUsers(users) {
-    // check if users are in the chat
+
+  static createGroup(cid, cname , user,members = [user]){
+    return new ChatRoom(cid, cname, 'group' , members);
   }
 
-  validateMessage(message) {
-    // validate message content
-  }
-
-  sendMessageToChat(user) {
-    // send message to chat
-  }
 
 }

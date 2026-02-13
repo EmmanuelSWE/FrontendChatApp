@@ -1,72 +1,201 @@
-.backGround{
+.backGround {
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
     height: 100vh;
-    
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-.cover{
+.cover {
     border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: brown;
+   background: linear-gradient(
+    45deg,
+    #7b3d226c,
+    #4f0491,
+    #471b4c,
+    #7b3d226c
+);
+   
     height: 50%;
     width: 45%;
-
     border-radius: 3%;
-
 }
 
-.words{
-    color : white;
+/* Tablets and small desktops */
+@media screen and (max-width: 1024px) {
+    .cover {
+        width: 65%;
+        height: 55%;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    .cover {
+        width: 80%;
+        height: 60%;
+    }
+    
+    .words {
+        width: 85%;
+    }
+    
+    .SubmitForm {
+        width: 70%;
+    }
+}
+
+/* Mobile phones */
+@media screen and (max-width: 480px) {
+    .cover {
+        width: 95%;
+        height: 70%;
+    }
+    
+    .words {
+        width: 90%;
+    }
+    
+    .SubmitForm {
+        width: 90%;
+    }
+    
+    button {
+        padding: 8px 30px;
+        width: 100%;
+        margin-top: 8%;
+    }
+    
+    .inputText {
+        width: 100%;
+        padding: 8px;
+        margin: 4% 0;
+    }
+}
+
+/* Very small phones */
+@media screen and (max-width: 320px) {
+    .cover {
+        height: 80%;
+        width: 98%;
+    }
+    
+    .words {
+        width: 95%;
+        font-size: 14px;
+    }
+    
+    .blurCover {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+.words {
+    color: white;
     background-image: url('../assets/bubble1.jpg');
     height: 100%;
-     width: 70%;
-       background-size: cover;
+    width: 70%;
+    background-size: cover;
     background-position: center;
-       border-radius: 3%;
+    border-radius: 3%;
     background-repeat: no-repeat;
 }
 
-.blurCover{
-  
-    height: 80%;
-    width : 80%;
-    position: relative;
-      display: flex;
-    background-color: transparent;
-    color: white;
-    align-items: center;
-
-    border-radius: 5px;
-
-
+/* Tablet adjustment for words */
+@media screen and (max-width: 768px) {
+    .words {
+        width: 85%;
+    }
 }
 
-.SubmitForm{
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.blurCover {
+    height: 80%;
+    width: 80%;
+    position: relative;
     display: flex;
+    background-color: transparent;
+
+    align-items: center;
+    border-radius: 5px;
+}
+
+/* Mobile adjustment for blurCover */
+@media screen and (max-width: 480px) {
+    .blurCover {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+.SubmitForm {
+    gap: 4px;
+    padding: 20px;
+    display: grid;
     width: 50%;
+}
+
+/* Tablet adjustment for form */
+@media screen and (max-width: 768px) {
+    .SubmitForm {
+        width: 70%;
+    }
+}
+
+/* Mobile adjustment for form */
+@media screen and (max-width: 480px) {
+    .SubmitForm {
+        width: 90%;
+    }
+}
+
+button {
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 1px transparent;
+    border-radius: 10px;
+    margin-top: 5%;
    
 }
 
-button{
-    background-color: black;
-    color: white;
-   border : 1px transparent;
-    border-radius: 10px;
-    margin-top: 5%;
-    padding: 4px 20px;
+/* Mobile button */
+@media screen and (max-width: 480px) {
+    button {
+        padding: 10px 30px;
+        width: 100%;
+        font-size: 16px;
+    }
 }
 
-.inputText{
+
+
+    button:hover {
+        background-color: #333;
+        cursor: pointer;
+    }
+
+
+.inputText {
+    padding: 10px;
     margin: 2% 0;
     border: 1px transparent;
     border-radius: 5px;
 }
+
+/* Mobile input */
+@media screen and (max-width: 480px) {
+    .inputText {
+        width: 100%;
+        padding: 10px;
+        margin: 4% 0;
+        font-size: 16px;
+    }
+}
+

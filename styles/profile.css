@@ -1,0 +1,180 @@
+*{  
+     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.gradientBar{
+    margin-top: 20px;
+    background-color: #111;
+    padding-top: 20px;
+     padding-bottom: 20px;
+}
+
+body {
+    font-family:  Arial, sans-serif;
+    line-height: 1.4;
+     background-color: #343434;
+    gap: 30px;
+    padding: 40px;
+}
+
+
+.profileCard {
+    background-color: #6B6B6B; 
+    width: 100%;
+    max-width: 900px;         
+    margin: 40px auto;         
+    border-radius: 12px;       
+    padding-bottom: 40px;      
+    overflow: hidden;         
+}
+
+
+.nameSection {
+    display: flex;
+    align-items: center;    
+    gap: 20px;              
+    padding: 30px;         
+}
+
+
+.profilePic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;     
+    object-fit: cover;      
+    border: 3px solid white;
+}
+
+
+.nameInfo {
+    display: flex;
+    flex-direction: column; 
+}
+ 
+.displayName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.topHeader .welcomeText {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.topHeader .dateText {
+    font-size: 0.9rem;
+    opacity: 0.75;
+}
+
+.userTag {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    color: white;
+}
+
+
+.inputSection {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;   
+    gap: 25px;                
+}
+
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  
+    gap: 25px;                       
+}
+
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+.formGroup label {
+    font-size: 0.9rem;
+    color: white;
+    opacity: 0.9;
+}
+
+
+.formGroup input {
+    padding: 12px 15px;
+    border-radius: 6px;
+    border: none;
+    background: #eee;
+    font-size: 1rem;
+    outline: none;
+}
+
+.buttonSection {
+    padding: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+a:link{
+    text-decoration: none;
+}
+.buttonSection button, .backBtn {
+    padding: 12px 24px;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.displayName {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+}
+
+.userTag {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.formGroup label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+    margin-bottom: 2px;
+}
+
+.formGroup input {
+    background: #f2f2f2;
+    transition: box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.profileCard {
+    padding-bottom: 32px;
+}
+
+.formGroup input:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+.inputSection {
+    gap: 24px;
+}
+
+.welcome{
+    
+  color: white;
+  font-weight: 200;  /* or use 'bold' for slightly less control */
+  font-size: 2.5rem;  /* adjust as needed */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);  /* optional: adds depth */
+  letter-spacing: 0.5px;  /* optional: improves readability */
+
+}

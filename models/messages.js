@@ -1,11 +1,12 @@
+//message class
 export class Message {
   constructor(mid, sender, message, cid) {
-    this.mid = mid;              // string (format of cid, chat number)
-    this.sender = sender;        // uid
-    this.message = message;      // string
-    this.deleted = false;        // boolean
-    this.createdAt = new Date(); // date
-    this.cid = cid;              // string
+    this.mid = mid;           
+    this.sender = sender;        
+    this.message = message;      
+    this.deleted = false;        
+    this.createdAt = new Date();
+    this.cid = cid;              
   }
 
   sendMessage(chatRoom) {

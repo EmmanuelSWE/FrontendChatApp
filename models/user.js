@@ -1,6 +1,8 @@
+//user class
 export class User {
-  constructor(id, userName, profilePhoto, password) {
-    this.id = id;                  // string
+  constructor(id, fullName='', userName, profilePhoto, password) {
+    this.id = id;   
+    this.fullName = fullName;               // string
     this.userName = userName;      // string
     this.status = "offline";       // string
     this.profilePhoto = profilePhoto; // string
@@ -22,20 +24,32 @@ export class User {
        
   }
 
+  static getUser(userName){
+        const queryUser = new User();
+        queryUser.userName = userName
+        let Users = JSON.parse(localStorage.getItem('Users'));
+
+        if(Users != null && User.lookforUser(Users,queryUser) != null){
+          return User.lookforUser(Users,queryUser);
+        }
+
+        return false;
+  }
+
   static signUp(user) {
     // logic for signing up
     //first make sure all the values are truthy 
 
-    console.log(`this is the user : ${user.id } ,${user.userName } ,${user.status },${user.profilePhoto }`);
+  
     if(user.id && user.userName && user.status && user.profilePhoto ){
-      console.log(`user valid`);
+     
       //get the list of user
       let Users = JSON.parse(localStorage.getItem('Users'));
 
       if( Users != null && User.lookforUser(Users,user) != null){
 
 
-        console.log('user name cannot be the same');
+        alert('user name TAKEN!');
         return;
       }
 
@@ -45,14 +59,14 @@ export class User {
       }else { // make and array and push it
         Users = [user];
       }
-      console.log(`saving user`);
+     
       //after push it back
       localStorage.setItem('Users',JSON.stringify(Users));
-       console.log(`user saved`);
+      ;
        window.location.href = '../pages/logIn.html';
 
     }else {
-      console.log(`was unable to signup`);
+      alert(`was unable to signup`);
     }
   }
 
@@ -64,31 +78,76 @@ export class User {
     let Users = JSON.parse(localStorage.getItem('Users'));
 
     if(Users != null){
-      console.log('Users are registerd');
+      
       if(Users.some( user  => {
         return user.userName === attemptUser.userName && user.password === attemptUser.password;
       })){ // if there is someone with that same log in details then log them in
-console.log(` user found`);
+
         attemptUser = User.lookforUser(Users,attemptUser);
-      console.log(` user found`);
+        attemptUser.status = 'online';
+     
+        
+        // Find and replace the user in the Users array
+        const userIndex = Users.findIndex(user => user.userName === attemptUser.userName);
+        if (userIndex !== -1) {
+          Users[userIndex] = attemptUser;
+          localStorage.setItem('Users', JSON.stringify(Users));
+        }
+     
         sessionStorage.setItem('user', JSON.stringify(attemptUser));
-       // console.log(`${attemptUser.userName} has logged in succesfully`);
+    
         return true;
-      } 
+      } else{
+        alert('User name or password incorret')
+      }
       
       return false
 
     }else{
-      console.log(`no users registerd`)
+     
      
     }
   }
 
-  logout() {
-    // logic for logging out
+static logOut(currentUser){
+ 
+  
+  if (currentUser) {
+    currentUser.status = 'offline';
+    
+    // Update users array in localStorage
+    let users = JSON.parse(localStorage.getItem('Users')) || [];
+    const userIndex = users.findIndex(user => user.id === currentUser.id);
+    
+    if (userIndex !== -1) {
+      users[userIndex].status = 'offline';
+      localStorage.setItem('Users', JSON.stringify(users));
+    }
+    
+    // ALSO update this user's status in ALL chat rooms they are members of
+    let chatRooms = JSON.parse(localStorage.getItem('chatRooms')) || [];
+    chatRooms = chatRooms.map(chatRoom => {
+      chatRoom.members = chatRoom.members.map(member => {
+        if (member.id === currentUser.id) {
+          member.status = 'offline'; // Update status in chat room members
+          return member;
+        }
+        return member;
+      });
+      return chatRoom;
+    });
+    
+    localStorage.setItem('chatRooms', JSON.stringify(chatRooms));
   }
-
-  sendMessage(chatRoom, body) {
-    // sends message to a specific chat room
-  }
+  
+  // Clear session storage
+  sessionStorage.clear();
+  
+  // Redirect to index.html
+  window.location.href = '../index.html';
 }
+
+}
+
+
+

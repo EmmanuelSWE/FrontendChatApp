@@ -1,0 +1,301 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* elements */
+header {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+p {
+    padding: 2%;
+    width: 50%;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    padding: 4px 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(26, 24, 24);
+    height: 100%;
+    width: 100%;
+}
+
+/* class names */
+.dropButton {
+    border: 0px transparent;
+}
+
+.center {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto 1fr auto; 
+    grid-template-areas: 
+        "chatName header"
+        "contact chat"
+        "profile text";
+    background-color: black;
+    overflow: hidden; 
+}
+
+/* Grid area assignments */
+.gridItem {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    min-width: 0; 
+}
+
+#header {
+    grid-area: header;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+}
+
+#chatName {
+    grid-area: chatName;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#contact {
+    grid-area: contact;
+    background-color: black;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    height: 100%;
+    width: 100%;
+}
+
+#chat {
+    grid-area: chat;
+    background-color: rgb(53, 53, 53);
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-width: 0; 
+}
+
+
+#userProfile{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 10px;
+    gap: 5px;
+}
+#profile {
+    grid-area: profile;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#text {
+    grid-area: text;
+    background-color: rgb(26, 24, 24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Fix chat banner */
+.chatBanner {
+    background-color: rgb(53, 53, 53);
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    overflow-x: hidden;
+    
+}
+
+.groupInput{
+    display: none;
+}
+
+/*  chat section */
+.chatSection {
+    flex: 1; 
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+}
+
+/*  messages container */
+#testblock {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+/*  message items */
+#testblock li {
+    width: 100%;
+    list-style: none;
+}
+
+#testblock li div {
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/*  contact section */
+.contactSection {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: black;
+    padding: 5px;
+}
+
+.globalLists {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.globalItem {
+    color: white;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/*  input section - NO MORE GAPS */
+.inputSection {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}
+
+#Testinput, input {
+    background-color: black;
+    border-radius: 15px;
+    border: 1px solid rgb(77, 76, 76);
+    color: white;
+    flex: 1; 
+    min-width: 0; 
+    height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+}
+
+#sendButton {
+    border-radius: 10px;
+    height: 40px;
+    padding: 0 20px;
+    white-space: nowrap;
+    flex-shrink: 0; 
+}
+
+#chatPic {
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid grey;
+    padding: 2px;
+    border-radius: 100%;
+}
+
+.createGroup {
+    display: grid;
+    padding: 2%;
+    width: 100%;
+}
+
+/*  dropdown containers */
+#itemContainerOnline,
+#itemContainerOffline,
+#itemContainerGroup {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.onlineList,
+.offlineList,
+.groupList {
+    width: 100%;
+    padding-left: 15px;
+}
+
+#contactName{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 768px) {
+    .center {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto 1fr auto auto;
+        grid-template-areas: 
+            "chatName"
+            "contact"
+              "header"
+            "chat"
+          
+            "text"
+            "profile";
+    }
+    
+    .chatBanner {
+        display: none;
+    }
+    
+    #text {
+        padding: 10px;
+    }
+    
+    .inputSection {
+        padding: 0 5px;
+    }
+}
+
