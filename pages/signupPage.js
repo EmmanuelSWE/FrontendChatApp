@@ -24,6 +24,6 @@ const signUp= async ()=>{
 
 signInForm.addEventListener('submit', (event) => {
     event.preventDefault(); // so that it doesnt reload 
-    console.log(`trying to sign a user up`);
+   
     signUp();
 })

@@ -13,6 +13,10 @@ a:link{
     text-decoration: none;
 }
 
+a:hover {
+    background-color: grey;
+    cursor: pointer;
+}
 
 
 /*  class names*/
@@ -70,4 +74,15 @@ border-bottom: 1px solid grey;
 #main{
     grid-column-start: 1;
     grid-column-end: 3;
+}
+
+p{
+    line-height: 4rem;
+}
+
+@media screen and (max-width: 780px) {
+    p{
+    line-height: 3rem;
+}
+
 }

@@ -64,23 +64,23 @@ export const addToList = (message, textSide) => {
 export const sendMessage = (message) => {
     localStorage.setItem('chat', JSON.stringify(message));
 
-    console.log(`here is the message `)
+
    addToList(message);
 }
 
 
 //adding event listener??
 window.addEventListener('storage', (event) => {
-    console.log(`just got a message`);
+   
     if(event.key === 'chat'){
 
        //first the currentsession of the chat
        const currentChat = JSON.parse(sessionStorage.getItem('currentChat'));
        if(currentChat != null && currentChat.cid === JSON.parse(event.newValue).cid){ //checking if the user in the session is in the chat
-         console.log(`recieved NEW value is ${JSON.parse(event.newValue).message}`)
+    
        addToList(JSON.parse(event.newValue), 'left');
        }else{
-        console.log(`recieved message but not in this chat`);
+            alert(`you received a message from ${JSON.parse(event.newValue).sender.userName}` )
        }
     }
 })
@@ -109,13 +109,13 @@ const dropList = (button,listContainter) => {
 
 }
 
-if(window.location.href === './chatPage.html'){
+
     //setting functionality
 dropList(onlineBtn,onlineContainer);
 dropList(offlineBtn, offlineContainer);
 dropList(grpBtn, grpContainer);
 
 
-}
+
 
 

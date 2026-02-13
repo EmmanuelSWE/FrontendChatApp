@@ -23,12 +23,12 @@ const changeUserName = (newUserName) => {
                 localStorage.setItem('Users', JSON.stringify(Users));
                 // Update session storage with the changed user
                 sessionStorage.setItem('user', JSON.stringify(user));
-                console.log(`Username changed successfully from ${oldUserName} to: ${newUserName}`);
+          
                 return true;
             }
         }
     }
-    console.log('Failed to change username');
+   
     return false;
 }
 
@@ -71,6 +71,9 @@ document.getElementById('saveBtn').addEventListener('click', function() {
   const inputs = document.querySelectorAll('.formGroup input');
   
   if (currentUser && inputs.length >= 2) {
+    // Store old username for updating chatRooms
+    const oldUserName = currentUser.userName;
+    
     // Update user object with new values
     currentUser.fullName = inputs[0].value;
     currentUser.name = inputs[0].value;
@@ -91,7 +94,36 @@ document.getElementById('saveBtn').addEventListener('click', function() {
     }
     
     localStorage.setItem('Users', JSON.stringify(users));
-
     
+    //  Update username in ALL chat rooms where this user is a member
+    let chatRooms = JSON.parse(localStorage.getItem('chatRooms')) || [];
+    
+    chatRooms = chatRooms.map(chatRoom => {
+      // Update the user in the members array
+      chatRoom.members = chatRoom.members.map(member => {
+        if (member.id === currentUser.id) {
+          return currentUser; // Replace with updated user object
+        }
+        return member;
+      });
+      
+      // Also update any messages sent by this user
+      if (chatRoom.messages) {
+        chatRoom.messages = chatRoom.messages.map(message => {
+          if (message.sender && message.sender.id === currentUser.id) {
+            message.sender = currentUser; // Replace sender with updated user
+          }
+          return message;
+        });
+      }
+      
+      return chatRoom;
+    });
+    
+    // Save updated chatRooms back to localStorage
+    localStorage.setItem('chatRooms', JSON.stringify(chatRooms));
+    
+    // Reload the page to reflect changes
+    location.reload();
   }
 });

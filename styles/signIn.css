@@ -12,8 +12,8 @@
     align-items: center;
     background-color: black;
     height: 100vh;
-    padding: 20px; /* CHANGED: Added padding for smaller screens */
-    box-sizing: border-box; /* CHANGED: Ensures padding doesn't increase height */
+    padding: 20px; 
+    box-sizing: border-box; 
 }
 
 .cover {
@@ -30,7 +30,7 @@
     border-radius: 3%;
 }
 
-/* CHANGED: Added media query for tablets and small desktops */
+/*  Added media query for tablets and small desktops */
 @media screen and (max-width: 1024px) {
     .cover {
         width: 70%;
@@ -38,7 +38,7 @@
     }
 }
 
-/* CHANGED: Added media query for mobile devices */
+/* Added media query for mobile devices */
 @media screen and (max-width: 768px) {
     .cover {
         width: 90%;
@@ -46,16 +46,16 @@
     }
     
     .words {
-        width: 80%; /* CHANGED: Wider text on mobile */
-        font-size: 14px; /* CHANGED: Slightly smaller font */
+        width: 80%; 
+        font-size: 14px; 
     }
     
     .SubmitForm {
-        width: 80%; /* CHANGED: Wider form on mobile */
+        width: 80%; 
     }
 }
 
-/* CHANGED: Added media query for very small devices */
+/*  Added media query for very small devices */
 @media screen and (max-width: 480px) {
     .cover {
         width: 95%;
@@ -72,13 +72,13 @@
     }
     
     button {
-        padding: 8px 16px; /* CHANGED: Larger touch target */
-        width: 100%; /* CHANGED: Full width button on mobile */
+        padding: 8px 16px; 
+        width: 100%; 
     }
     
     .inputText {
-        width: 100%; /* CHANGED: Full width inputs on mobile */
-        padding: 8px; /* CHANGED: Better touch target */
+        width: 100%; 
+        padding: 8px; 
     }
 }
 
@@ -102,7 +102,7 @@
     gap: 15px;
 }
 
-/* CHANGED: Added responsive sizing for blurCover */
+/*  Added responsive sizing for blurCover */
 @media screen and (max-width: 768px) {
     .blurCover {
         width: 90%;
@@ -114,7 +114,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    display: flex;
+    display: grid;
     width: 50%;
 }
 
@@ -127,7 +127,7 @@ button {
     padding: 4px 20px;
 }
 
-/* CHANGED: Added hover effect for better UX */
+/*  Added hover effect for better UX */
 button:hover {
     background-color: #333;
     cursor: pointer;
@@ -137,13 +137,13 @@ button:hover {
     margin: 2% 0;
     border: 1px transparent;
     border-radius: 5px;
-    width: 100%; /* CHANGED: Full width of parent */
-    max-width: 300px; /* CHANGED: Added - limits width */
-    padding: 4px 8px; /* CHANGED: Added - better spacing */
-    box-sizing: border-box; /* CHANGED: Added - padding included in width */
+    width: 100%; 
+    max-width: 300px; 
+    padding: 4px 8px; 
+    box-sizing: border-box; 
 }
 
-/* CHANGED: Added focus state for accessibility */
+/*  Added focus state for accessibility */
 .inputText:focus {
     outline: 2px solid rgba(125, 14, 104, 0.8);
     outline-offset: 2px;

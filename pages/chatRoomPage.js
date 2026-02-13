@@ -2,12 +2,14 @@ import { User } from '../models/user.js';
 import { ChatRoom } from '../models/chatRoom.js';
 import { addToList ,sendMessage } from '../utility/test.js';
 import { Message } from '../models/messages.js';
-console.log(`the page is loadded`)
+
 
 //when page is loaded, add these
 document.addEventListener('DOMContentLoaded', ()=>{
-
+//load them
   loadLists();
+
+
 
   // Get the profile container
 const profileDiv = document.getElementById('profile');
@@ -113,15 +115,18 @@ onlineContainer.replaceChildren();
 offlineContainer.replaceChildren();
 grpContainer.replaceChildren();
 
-//get the stuff
-// Create 10 users
+//collapse the lists 
+onlineContainer.style.display = 'none';
+offlineContainer.style.display = 'none';
+grpContainer.style.display = 'none';
+
 const users = JSON.parse(localStorage.getItem('Users'));
 
 
-console.log('users loaded')
-// Create 10 chat rooms
+
+
 const chatRooms =JSON.parse(localStorage.getItem('chatRooms'));
-console.log('chatRooms loaded')
+
 
 
 
@@ -139,10 +144,10 @@ const loadChatRoom = (userName, type = '') => {
     const currentChat = getchatRoom(userName, type);
 
     if (currentChat === null) {
-        console.log('stopped');
+       
         return null;
     }
-    console.log(`these are the elements of a chatRoom : ${currentChat.cname}`);
+ 
 
     // CHANGE THE HEADER - ADDED IMAGE
     const headerElement = document.getElementById('contactName');
@@ -196,9 +201,20 @@ const getchatRoom = (userName ,type='') => {
   const realUser = User.getUser(userName);
   const sessionUser = JSON.parse(sessionStorage.getItem('user'));
   //once you have the user now begin to look for the user
+  // Check if sessionUser exists (not logged out)
+  if (!sessionUser) {
+ 
+    return null;
+  }
+  
+  // once you have the user now begin to look for the user
+  if (realUser.id === sessionUser.id) {
+       
+        return null;
+    }
 
   if (realUser.id === sessionUser.id) {
-        console.log("You cannot chat with yourself");
+       
         return null;
     }
   let chatRoom;
@@ -231,7 +247,7 @@ const getchatRoom = (userName ,type='') => {
      return  chat.cType != 'group' && (chat.members[0].id === realUser.id || chat.members[0].id == sessionUser.id)  && ( (chat.members[1].id === realUser.id || chat.members[1].id == sessionUser.id) );
     })){ // if there is one like that the we have to find it 
         [chatRoom] = chatRooms.filter( chat => { return chat.cType != 'group' && (chat.members[0].id === realUser.id || chat.members[0].id == sessionUser.id)  && ( (chat.members[1].id === realUser.id || chat.members[1].id == sessionUser.id) )});
-
+        //edit the chatRoom name just incase
     } else{ // or we make a new one
         chatRoom = new ChatRoom(count + 1, 'privateChat1', 'private', [realUser, sessionUser]);
         chatRooms.push(chatRoom);
@@ -258,10 +274,10 @@ const loadChats =(chatRoom) => {
   const sessionUser = JSON.parse(sessionStorage.getItem('user'));
   const list = document.getElementById('testBlock');
   list.replaceChildren(); // clear the entire list
-console.log(`loading message ${chatRoom.messages.length}`)
+
   chatRoom.messages.forEach(message => {
 
-    console.log(`loading message ${message.message}`)
+   
     if(message.sender.id === sessionUser.id ){
       addToList(message);
     }else{
@@ -282,21 +298,21 @@ const sendchatBlock =() => {
   currentChat.messages.push(messageToSend);
   sessionStorage.setItem('currentChat', JSON.stringify(currentChat)); // saving the current chat
 
-  console.log(`now the number of message is ${currentChat.messages.length}`)
+ 
   //replace the chat.
   const chatRooms = JSON.parse(localStorage.getItem('chatRooms'));
   const index = chatRooms.findIndex( item => {
  return item.cid === currentChat.cid});
 
 
-  console.log(`this is the index of the chat ${index}`)
+  
   if(index != -1){ //index found replace
-    console.log(`chatRoom found`);
+    
 
     chatRooms[index] = currentChat;
      localStorage.setItem('chatRooms',JSON.stringify(chatRooms));
   }
-  console.log(`sending ${messageToSend.message}`);
+
 
   //after replacing you send the chat
   sendMessage(messageToSend);
@@ -346,3 +362,29 @@ grpContainer.replaceChildren();
 //logOut functionality
 const logOut = document.getElementById('logOutbtn');
 
+// Listen for storage changes across tabs
+window.addEventListener('storage', (event) => {
+    
+    // When Users array changes (login, logout, signup, EDIT USERNAME)
+    if (event.key === 'Users') {
+      
+        loadLists();
+    }
+    
+    // When chatRooms array changes (new group created)
+    if (event.key === 'chatRooms') {
+       
+        const grpContainer = document.getElementById('itemContainerGroup');
+        if (grpContainer) {
+            grpContainer.replaceChildren();
+            const chatRooms = JSON.parse(event.newValue);
+            filterGroups(chatRooms, grpContainer);
+        }
+    }
+    
+    // When user logs out in another tab
+    if (event.key === 'user' && event.newValue === null) {
+      
+        window.location.href = '../pages/logIn.html';
+    }
+});
