@@ -5,7 +5,7 @@ import { User } from "../models/user.js";
 const signInForm = document.getElementById('SubmitForm');
 const fNameInput = document.getElementById('fNameInput');
 const uNameInput = document.getElementById('uNameInput');
-const email = document.getElementById('email');
+
 const password = document.getElementById('password');
 
 
@@ -14,7 +14,7 @@ const signUp= async ()=>{
     //get the number of user
     const Users = JSON.parse(localStorage.getItem('Users'));
    const  count = Users ==null ? 0 : Users.length
-    const newUser = new User(count+1,uNameInput.value,'pic', password.value);
+    const newUser = new User(count+1, fNameInput.value,uNameInput.value,'pic', password.value);
 
     User.signUp(newUser);
 }

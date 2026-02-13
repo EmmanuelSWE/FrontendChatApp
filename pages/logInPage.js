@@ -10,9 +10,11 @@ const password = document.getElementById('password');
 //function to signup
 const logIn= async ()=>{
     //get the number of user
-    let newUser = new User(0,uNameInput.value,'pic', password.value);
- console.log(`this is the user : ${newUser.id } ,${newUser.userName } ,${newUser.status },${newUser.profilePhoto }`);
+    let newUser = new User(0,'',uNameInput.value,'pic', password.value);
+ console.log(`this is the user : ${newUser.fullName } ,${newUser.userName } ,${newUser.status },${newUser.profilePhoto }`);
     if(User.login(newUser)){
+
+        console.log(`going now`);
         window.location.href = './chatPage.html';
     }
     

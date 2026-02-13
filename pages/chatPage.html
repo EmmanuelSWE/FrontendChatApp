@@ -5,20 +5,20 @@
 </head>
 <body>
   <main class="center">
-    <div class="gridItem" id="header">
-      <header>
-        <h1>header</h1>
-      </header>
-    </div>
+  
     <div class="gridItem" id="chatName">
-      <div class="chatBanner">
-        <h1 id="UserName">Ozzy Ozborn</h1>
-      </div>
+      <h1 class="globalItem">Groups and User Lists</h1>
+    </div>
+
+      <div class="gridItem" id="header">
+      <header>
+        <h1 id="contactName">header</h1>
+      </header>
     </div>
     <div class="gridItem" id="contact">
       <section class="contactSection" id="contactList">
         <ul class="globalLists">
-          <h1 class="globalItem">Groups and User Lists</h1>
+        
 
           <li class="globalItem">
             <button id="onlineGrpBtn" class="dropButton">Online  <i class="fa-solid fa-angle-down"></i></button>
@@ -35,7 +35,14 @@
             </div>
           </li>
 
-          <button class="borderButton">Create group</button>
+         <div class="createGroup">
+             <button class="borderButton" id="makeGroup">Create group</button>
+
+         <div class="groupInput" id="inputSection">
+             <input placeholder="Enter group name" id="grpInput" >
+              <button class="borderButton" id="grpButton"><i class="fa-regular fa-paper-plane"></i></button>
+         </div>
+         </div>
 
           <li class="globalItem">
             <button id="grpBtn" class="dropButton">Groups  <i class="fa-solid fa-angle-down"></i></button>
@@ -46,13 +53,30 @@
           </li>
         </ul>
       </section>
+
     </div>
     <div class="gridItem" id="chat">
+
+          <div class="chatBanner">
+
+        <h4 >Begin chatting with</h4>
+        <img id="chatPic" src="../assets/bubble1.jpg" alt="profilepic"/>
+
+        <h1 id="UserName">Ozzy Ozborn</h1>
+            
+         <h4 >Last seen</h4>
+         
+      </div>
       <div class="chatSection" id="chatSection">
         <ul id="testBlock"></ul>
       </div>
     </div>
-    <div class="gridItem" id="profile">e</div>
+    <div class="gridItem" id="profile"> 
+        <div id="userProfile">
+            
+        </div>  
+     
+    </div>
     <div class="gridItem" id="text">
       <footer>
        <div class="inputSection">

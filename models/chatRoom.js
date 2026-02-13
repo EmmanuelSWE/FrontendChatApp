@@ -9,16 +9,10 @@ export class ChatRoom {
     this.members = members;       // array of Users
   }
 
-  validateUsers(users) {
-    // check if users are in the chat
+
+  static createGroup(cid, cname , user,members = [user]){
+    return new ChatRoom(cid, cname, 'group' , members);
   }
 
-  validateMessage(message) {
-    // validate message content
-  }
-
-  sendMessageToChat(user) {
-    // send message to chat
-  }
 
 }

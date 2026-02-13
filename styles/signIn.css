@@ -1,14 +1,22 @@
-.backGround{
+*{  
+     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.backGround {
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
     height: 100vh;
-    
+    padding: 20px; /* CHANGED: Added padding for smaller screens */
+    box-sizing: border-box; /* CHANGED: Ensures padding doesn't increase height */
 }
 
-.cover{
+.cover {
     border: 1px solid white;
     display: flex;
     align-items: center;
@@ -20,53 +28,123 @@
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 3%;
-
 }
 
-.words{
-    color : white;
-     text-align: center;
-     width: 50%;
-   
+/* CHANGED: Added media query for tablets and small desktops */
+@media screen and (max-width: 1024px) {
+    .cover {
+        width: 70%;
+        height: 60%;
+    }
 }
 
-.blurCover{
-  
+/* CHANGED: Added media query for mobile devices */
+@media screen and (max-width: 768px) {
+    .cover {
+        width: 90%;
+        height: 70%;
+    }
+    
+    .words {
+        width: 80%; /* CHANGED: Wider text on mobile */
+        font-size: 14px; /* CHANGED: Slightly smaller font */
+    }
+    
+    .SubmitForm {
+        width: 80%; /* CHANGED: Wider form on mobile */
+    }
+}
+
+/* CHANGED: Added media query for very small devices */
+@media screen and (max-width: 480px) {
+    .cover {
+        width: 95%;
+        height: 80%;
+    }
+    
+    .words {
+        width: 90%;
+        font-size: 12px;
+    }
+    
+    .SubmitForm {
+        width: 90%;
+    }
+    
+    button {
+        padding: 8px 16px; /* CHANGED: Larger touch target */
+        width: 100%; /* CHANGED: Full width button on mobile */
+    }
+    
+    .inputText {
+        width: 100%; /* CHANGED: Full width inputs on mobile */
+        padding: 8px; /* CHANGED: Better touch target */
+    }
+}
+
+.words {
+    color: white;
+    text-align: center;
+    width: 50%;
+}
+
+.blurCover {
     height: 80%;
-    width : 80%;
+    width: 80%;
     position: relative;
-      display: flex;
-  
+    display: flex;
     background-color: rgba(125, 14, 104, 0.322);
     color: white;
-    backdrop-filter: blur(5px); /* make the background blur*/
+    backdrop-filter: blur(5px);
     align-items: center;
-
     border-radius: 5px;
-
-
+    padding: 20px;
+    gap: 15px;
 }
 
-.SubmitForm{
+/* CHANGED: Added responsive sizing for blurCover */
+@media screen and (max-width: 768px) {
+    .blurCover {
+        width: 90%;
+        height: 90%;
+    }
+}
+
+.SubmitForm {
     justify-content: center;
     align-items: center;
     flex-direction: column;
     display: flex;
     width: 50%;
-   
 }
 
-button{
+button {
     background-color: black;
     color: white;
-   border : 1px transparent;
+    border: 1px transparent;
     border-radius: 10px;
     margin-top: 5%;
     padding: 4px 20px;
 }
 
-.inputText{
+/* CHANGED: Added hover effect for better UX */
+button:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+.inputText {
     margin: 2% 0;
     border: 1px transparent;
     border-radius: 5px;
+    width: 100%; /* CHANGED: Full width of parent */
+    max-width: 300px; /* CHANGED: Added - limits width */
+    padding: 4px 8px; /* CHANGED: Added - better spacing */
+    box-sizing: border-box; /* CHANGED: Added - padding included in width */
+}
+
+/* CHANGED: Added focus state for accessibility */
+.inputText:focus {
+    outline: 2px solid rgba(125, 14, 104, 0.8);
+    outline-offset: 2px;
 }

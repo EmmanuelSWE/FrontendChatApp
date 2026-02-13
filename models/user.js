@@ -1,6 +1,7 @@
 export class User {
-  constructor(id, userName, profilePhoto, password) {
-    this.id = id;                  // string
+  constructor(id, fullName='', userName, profilePhoto, password) {
+    this.id = id;   
+    this.fullName = fullName;               // string
     this.userName = userName;      // string
     this.status = "offline";       // string
     this.profilePhoto = profilePhoto; // string
@@ -82,7 +83,16 @@ export class User {
       })){ // if there is someone with that same log in details then log them in
 console.log(` user found`);
         attemptUser = User.lookforUser(Users,attemptUser);
-      console.log(` user found`);
+        attemptUser.status = 'online';
+        console.log(`set user online`);
+        
+        // Find and replace the user in the Users array
+        const userIndex = Users.findIndex(user => user.userName === attemptUser.userName);
+        if (userIndex !== -1) {
+          Users[userIndex] = attemptUser;
+          localStorage.setItem('Users', JSON.stringify(Users));
+        }
+     
         sessionStorage.setItem('user', JSON.stringify(attemptUser));
        // console.log(`${attemptUser.userName} has logged in succesfully`);
         return true;
@@ -96,13 +106,34 @@ console.log(` user found`);
     }
   }
 
-  logout() {
-    // logic for logging out
+ static logOut(currentUser){
+  console.log('loggin out');
+  // Get current user and set to offline
+  
+  
+  if (currentUser) {
+    currentUser.status = 'offline';
+    
+    // Update users array in localStorage
+    let users = JSON.parse(localStorage.getItem('Users')) || [];
+    const userIndex = users.findIndex(user => user.id === currentUser.id);
+    
+    if (userIndex !== -1) {
+      users[userIndex].status = 'offline';
+    } 
+    
+    localStorage.setItem('Users', JSON.stringify(users));
   }
+  
+  // Clear session storage
+  sessionStorage.clear();
+  
+  // Redirect to index.html
+  window.location.href = '../index.html';
 
-  sendMessage(chatRoom, body) {
-    // sends message to a specific chat room
-  }
+}
+
+
 }
 
 
