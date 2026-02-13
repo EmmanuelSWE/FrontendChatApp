@@ -132,7 +132,6 @@ static logOut(currentUser){
           member.status = 'offline'; // Update status in chat room members
           return member;
         }
-        return member;
       });
       return chatRoom;
     });
