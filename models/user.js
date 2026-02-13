@@ -112,7 +112,7 @@ export class User {
 static async logOut(currentUser){
  
   if (currentUser) {
-    currentUser.status = 'offline';
+    
     
     // Update users array in localStorage
     let users = JSON.parse(localStorage.getItem('Users'));
@@ -126,19 +126,15 @@ static async logOut(currentUser){
     
     // Check if chatRooms exists BEFORE processing
     let chatRooms = JSON.parse(localStorage.getItem('chatRooms'));
-    if (chatRooms && Array.isArray(chatRooms)) {  // CRITICAL: Check if exists and is array
-      chatRooms = chatRooms.map(chatRoom => {
-        // Also check if chatRoom and members exist
-        if (chatRoom && chatRoom.members) {
-          chatRoom.members = chatRoom.members.map(member => {
-            if (member && member.id === currentUser.id) {
-              member.status = 'offline';
-            }
-            return member;
-          });
+    if (chatRooms != null) {  
+      chatRooms.forEach( chat => {
+        
+        const index = chat.members.findIndex( user => user.id === currentUser.id);
+
+        if(index != null){
+          chat.members[index].status = 'offline';
         }
-        return chatRoom;
-      });
+      })
       
       localStorage.setItem('chatRooms', JSON.stringify(chatRooms));
     }
