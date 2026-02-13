@@ -316,6 +316,7 @@ const sendchatBlock =() => {
 
   //after replacing you send the chat
   sendMessage(messageToSend);
+  input.value = '';
   
 }
 
@@ -324,8 +325,16 @@ const button = document.getElementById('sendButton');
 
 button.addEventListener('click', ()=>{
     sendchatBlock();
+
     
 })
+
+  const input = document.getElementById('Testinput');
+ input.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        sendchatBlock();
+    }
+});
 
 
 //event listener for the button

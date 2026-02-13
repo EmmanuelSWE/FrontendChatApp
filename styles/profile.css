@@ -6,8 +6,16 @@
 
 
 .gradientBar{
+    color: white;
     margin-top: 20px;
-    background-color: #111;
+    background: linear-gradient(
+        to right,
+        white,
+        grey,
+        grey,
+        black
+        
+    );
     padding-top: 20px;
      padding-bottom: 20px;
 }
@@ -172,9 +180,9 @@ a:link{
 .welcome{
     
   color: white;
-  font-weight: 200;  /* or use 'bold' for slightly less control */
-  font-size: 2.5rem;  /* adjust as needed */
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);  /* optional: adds depth */
-  letter-spacing: 0.5px;  /* optional: improves readability */
+  font-weight: 200;  
+  font-size: 2.5rem;  
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);  
+  letter-spacing: 0.5px;  
 
 }
