@@ -213,10 +213,7 @@ const getchatRoom = (userName ,type='') => {
         return null;
     }
 
-  if (realUser.id === sessionUser.id) {
-       
-        return null;
-    }
+  
   let chatRoom;
   let chatRooms = JSON.parse(localStorage.getItem('chatRooms'));
 

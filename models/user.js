@@ -116,7 +116,7 @@ static logOut(currentUser){
     currentUser.status = 'offline';
     
     // Update users array in localStorage
-    let users = JSON.parse(localStorage.getItem('Users')) || [];
+    let users = JSON.parse(localStorage.getItem('Users')) ;
     const userIndex = users.findIndex(user => user.id === currentUser.id);
     
     if (userIndex !== -1) {
@@ -125,7 +125,7 @@ static logOut(currentUser){
     }
     
     // ALSO update this user's status in ALL chat rooms they are members of
-    let chatRooms = JSON.parse(localStorage.getItem('chatRooms')) || [];
+    let chatRooms = JSON.parse(localStorage.getItem('chatRooms')) ;
     chatRooms = chatRooms.map(chatRoom => {
       chatRoom.members = chatRoom.members.map(member => {
         if (member.id === currentUser.id) {
