@@ -26,9 +26,9 @@ profileDiv.innerHTML = `
 `;
 
 // NOW add event listeners AFTER the buttons exist in the DOM
-document.getElementById('logOutbtn').addEventListener('click', () => {
+document.getElementById('logOutbtn').addEventListener('click', async () => {
     const sessionUser = JSON.parse(sessionStorage.getItem('user'));
-    User.logOut(sessionUser);
+   await User.logOut(sessionUser);
 });
 
 document.getElementById('settings').addEventListener('click', () => {
@@ -213,10 +213,7 @@ const getchatRoom = (userName ,type='') => {
         return null;
     }
 
-  if (realUser.id === sessionUser.id) {
-       
-        return null;
-    }
+  
   let chatRoom;
   let chatRooms = JSON.parse(localStorage.getItem('chatRooms'));
 
@@ -244,7 +241,7 @@ const getchatRoom = (userName ,type='') => {
     }})
     //first see if there is one like that
  if(   chatRooms.some( chat=> {
-     return  chat.cType != 'group' && (chat.members[0].id === realUser.id || chat.members[0].id == sessionUser.id)  && ( (chat.members[1].id === realUser.id || chat.members[1].id == sessionUser.id) );
+     return  chat.cType != 'group' && (chat.members[0].id === realUser.id || chat.members[0].id === sessionUser.id)  && ( (chat.members[1].id === realUser.id || chat.members[1].id == sessionUser.id) );
     })){ // if there is one like that the we have to find it 
         [chatRoom] = chatRooms.filter( chat => { return chat.cType != 'group' && (chat.members[0].id === realUser.id || chat.members[0].id == sessionUser.id)  && ( (chat.members[1].id === realUser.id || chat.members[1].id == sessionUser.id) )});
         //edit the chatRoom name just incase

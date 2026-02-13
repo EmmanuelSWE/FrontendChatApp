@@ -109,41 +109,42 @@ export class User {
     }
   }
 
-static logOut(currentUser){
+static async logOut(currentUser){
  
-  
   if (currentUser) {
-    currentUser.status = 'offline';
+    
     
     // Update users array in localStorage
-    let users = JSON.parse(localStorage.getItem('Users')) || [];
-    const userIndex = users.findIndex(user => user.id === currentUser.id);
-    
-    if (userIndex !== -1) {
-      users[userIndex].status = 'offline';
-      localStorage.setItem('Users', JSON.stringify(users));
+    let users = JSON.parse(localStorage.getItem('Users'));
+    if (users) {  // Add null check
+      const userIndex = users.findIndex(user => user.id === currentUser.id);
+      if (userIndex !== -1) {
+        users[userIndex].status = 'offline';
+        localStorage.setItem('Users', JSON.stringify(users));
+      }
     }
     
-    // ALSO update this user's status in ALL chat rooms they are members of
-    let chatRooms = JSON.parse(localStorage.getItem('chatRooms')) || [];
-    chatRooms = chatRooms.map(chatRoom => {
-      chatRoom.members = chatRoom.members.map(member => {
-        if (member.id === currentUser.id) {
-          member.status = 'offline'; // Update status in chat room members
-          return member;
+    // Check if chatRooms exists BEFORE processing
+    let chatRooms = JSON.parse(localStorage.getItem('chatRooms'));
+    if (chatRooms != null) {  
+      chatRooms.forEach( chat => {
+        
+        const index = chat.members.findIndex( user => user.id === currentUser.id);
+
+        if(index != null){
+          chat.members[index].status = 'offline';
         }
-        return member;
-      });
-      return chatRoom;
-    });
-    
-    localStorage.setItem('chatRooms', JSON.stringify(chatRooms));
+      })
+      
+      localStorage.setItem('chatRooms', JSON.stringify(chatRooms));
+    }
+    //  Don't do anything if chatRooms doesn't exist
   }
   
   // Clear session storage
   sessionStorage.clear();
   
-  // Redirect to index.html
+  // Redirect
   window.location.href = '../index.html';
 }
 
